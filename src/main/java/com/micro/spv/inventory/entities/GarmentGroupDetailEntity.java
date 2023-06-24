@@ -21,4 +21,7 @@ public class GarmentGroupDetailEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "identity_garment")
     short identityGarment;
+
+    @Column(name = "identity_garment_group")
+    short identityGarmentGroup;
 }
