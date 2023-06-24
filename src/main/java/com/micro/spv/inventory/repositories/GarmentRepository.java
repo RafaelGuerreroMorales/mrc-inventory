@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.micro.spv.inventory.entities.GarmentCategoryEntity;
 import com.micro.spv.inventory.entities.GarmentComplementaryEntity;
 import com.micro.spv.inventory.entities.GarmentEntity;
+import com.micro.spv.inventory.entities.GarmentPriceEntity;
 
 @Repository
 public class GarmentRepository extends BaseRepository {
@@ -55,6 +56,17 @@ public class GarmentRepository extends BaseRepository {
         var rootQuery = criteriaQuery.from(GarmentComplementaryEntity.class);
 
         var predicate = criteriaBuilder.equal(rootQuery.get("identityCategory"), idCategory);
+
+        criteriaQuery.where(predicate);
+        return entityManager.createQuery(criteriaQuery).getResultList();
+    }
+
+    public List<GarmentPriceEntity> findGarmentPriceByIdentityService(short identityService){
+        var criteriaBuilder = entityManager.getCriteriaBuilder();
+        var criteriaQuery = criteriaBuilder.createQuery(GarmentPriceEntity.class);
+        var rootQuery = criteriaQuery.from(GarmentPriceEntity.class);
+
+        var predicate = criteriaBuilder.equal(rootQuery.get("identityService"), identityService);
 
         criteriaQuery.where(predicate);
         return entityManager.createQuery(criteriaQuery).getResultList();
