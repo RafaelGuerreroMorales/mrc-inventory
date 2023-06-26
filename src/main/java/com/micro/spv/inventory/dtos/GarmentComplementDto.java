@@ -13,5 +13,4 @@ public class GarmentComplementDto implements Serializable {
     short idGarmentComplement;
     String complementName;
     String description;
-    float price;
 }

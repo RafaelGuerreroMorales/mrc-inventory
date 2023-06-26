@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class GarmentGroupComplementDto implements Serializable {
-    short idGarmentGroupComplement;
-    String GarmentGroupComplementName;
-    String description;
-    float price;
+public class ResponseDto<T extends Serializable> implements Serializable {
+    Short type;
+    String messages;
+    T data;
 }

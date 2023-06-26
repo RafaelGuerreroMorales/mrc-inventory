@@ -22,17 +22,12 @@ public class GarmentRepository extends BaseRepository {
         return entityManager.createQuery(criteriaQuery).getResultList();
     }
 
-    public List<GarmentEntity> findGarmentByIds(short... idGarment){
+    public List<GarmentEntity> findGarmentByIds(List<Short> idGarment){
         var criteriaBuilder = entityManager.getCriteriaBuilder();
         var criteriaQuery = criteriaBuilder.createQuery(GarmentEntity.class);
         var rootQuery = criteriaQuery.from(GarmentEntity.class);
 
-        String stringIdGarment = "";
-        for(short item: idGarment)
-            stringIdGarment += String.format("," + item);
-        
-        stringIdGarment.replaceFirst(stringIdGarment, ",");
-        var predicate = rootQuery.get("identityGarment").in(stringIdGarment);
+        var predicate = rootQuery.get("identityGarment").in(idGarment);
 
         criteriaQuery.where(predicate);
         return entityManager.createQuery(criteriaQuery).getResultList();

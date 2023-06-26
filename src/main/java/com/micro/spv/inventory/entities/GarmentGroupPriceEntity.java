@@ -12,15 +12,15 @@ import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "cat_garment_prices")
+@Table(name = "cat_group_garment_prices")
 @Entity
 @Data
-public class GarmentPriceEntity {
-    
+public class GarmentGroupPriceEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "identity_garment")
-    short identityGarment;
+    @Column(name = "identity_garment_group")
+    short identityGarmentGroup;
 
     @Column(name = "identity_service")
     short identityService;
@@ -30,4 +30,5 @@ public class GarmentPriceEntity {
 
     @Column(name = "description")
     String description;
+    
 }
